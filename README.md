@@ -14,3 +14,8 @@
 ### 2. actionTypes的引入
 
 * action.type是一个字符串，某处写错并不报错，作为常量定义在actionTypes中写错会报错，方便调试
+
+### 3. actionCreator统一创建action
+
+* 提高代码的可维护性
+* 方便自动化测试测试
