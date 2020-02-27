@@ -40,3 +40,25 @@
 * 当组件中功能只是渲染(render)，就可写成无状态组件(函数)
 * 无状态组件为函数，普通组件为class，类需要执行生命周期等，性能不如函数组件
 
+### 6. Redux Thunk
+
+* yarn add redux-thunk
+* 创建store时，引入redux-thunk，这是Redux的中间件
+```
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import rootReducer from './reducers/index';
+// Note: this API requires redux@>=3.1.0
+const store = createStore(rootReducer, applyMiddleware(thunk));
+```
+* 引入redux-thunk就可以把异步操作调用接口的操作从组件中移到action中
+* 使用redux-thunk后，action的返回值可以是一个函数了，之前返回的是type和data的对象
+```
+ componentDidMount() {
+    // redux-thunk使action返回函数，而非对象
+    const action = getTodoList()  
+    // action会执行,此步只是触发actionCreators中的函数
+    // 之后action（这是一个对象）再dispatch出去
+}
+```
+* 引入thunk是防止异步函数多导致生命周期代码越来越臃肿难以维护，且有利于自动化测试

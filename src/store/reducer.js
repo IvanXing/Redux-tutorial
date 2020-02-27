@@ -2,13 +2,13 @@ import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM, INIT_LIST_ACTION }
 
 const defaultState = {
     inputValue: '',
-    list: []
+    list: [],
 }
 
 // reducer可以接受state但是不能修改state 所以深拷贝一个state操作
 export default (state = defaultState, action) => {
 
-    console.log('目前的store:', state, '传来动作:', action)
+    // console.log('目前的store:', state, '传来动作:', action)
 
     if (action.type === INIT_LIST_ACTION) {
         const newState = JSON.parse(JSON.stringify(state));
