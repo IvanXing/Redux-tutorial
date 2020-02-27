@@ -5,8 +5,9 @@ import {
     getInputChangeAction, 
     getAddItemAction,
     getDeleteItemAction, 
-    initListAction,  //不使用中间件
+    // initListAction,  //不使用中间件
     // getTodoList, // 使用redux-thunk
+    getInitList, // 使用redux-saga
 } from './store/actionCreators';
 import TodoListUI from './TodoListUI';
 // import axios from 'axios';
@@ -56,11 +57,7 @@ class TodoList extends Component {
 
     // 获取接口数据（用redex-saga版本）
     componentDidMount() {
-        // axios.get('/api/list').then((res) => {
-        //     console.log(res)
-        // })
-        const axiosdata = ['hello', 'small', 'fatty']
-        const action = initListAction(axiosdata);
+        const action = getInitList();
         store.dispatch(action);
     }
 

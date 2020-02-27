@@ -63,4 +63,6 @@ const store = createStore(rootReducer, applyMiddleware(thunk));
 ```
 * 引入thunk是防止异步函数多导致生命周期代码越来越臃肿难以维护，且有利于自动化测试
 
-### 7. Redux saga（异步逻辑放到action中）
+### 7. Redux saga（异步逻辑放到单独文件中管理 sagas.js）
+
+* yarn add redux-saga
