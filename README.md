@@ -40,10 +40,10 @@
 * 当组件中功能只是渲染(render)，就可写成无状态组件(函数)
 * 无状态组件为函数，普通组件为class，类需要执行生命周期等，性能不如函数组件
 
-### 6. Redux Thunk
+### 6. Redux Thunk（异步逻辑放到action中）
 
 * yarn add redux-thunk
-* 创建store时，引入redux-thunk，这是Redux的中间件
+* 创建store时，引入redux-thunk，这是Redux的中间件（action和store的中间）
 ```
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
@@ -62,3 +62,5 @@ const store = createStore(rootReducer, applyMiddleware(thunk));
 }
 ```
 * 引入thunk是防止异步函数多导致生命周期代码越来越臃肿难以维护，且有利于自动化测试
+
+### 7. Redux saga（异步逻辑放到action中）

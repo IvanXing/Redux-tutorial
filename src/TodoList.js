@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import store from './store/index'
-import { getInputChangeAction, getAddItemAction, getDeleteItemAction, getTodoList } from './store/actionCreators';
+import { 
+    getInputChangeAction, 
+    getAddItemAction,
+    getDeleteItemAction, 
+    initListAction,  //不使用中间件
+    // getTodoList, // 使用redux-thunk
+} from './store/actionCreators';
 import TodoListUI from './TodoListUI';
 // import axios from 'axios';
 
@@ -31,18 +37,31 @@ class TodoList extends Component {
         )
     }
 
-    // 获取接口数据
+    // 获取接口数据（不使用中间件）
+    //  componentDidMount() {
+    //     // axios.get('/api/list').then((res) => {
+    //     //     console.log(res)
+    //     // })
+    //     const axiosdata = ['hello', 'small', 'fatty']
+    //     const action = initListAction(axiosdata);
+    //     store.dispatch(action);
+    // }
+
+    // 获取接口数据（用redex-thunk版本）
+    // componentDidMount() {
+    //     const action = getTodoList()  // redux-thunk使action返回函数
+    //     // console.log(action) // action函数
+    //     store.dispatch(action); // action会执行,此步只是触发actionCreators中的函数
+    // }
+
+    // 获取接口数据（用redex-saga版本）
     componentDidMount() {
-        const action = getTodoList()  // redux-thunk使action返回函数
-        // console.log(action) // action函数
-        store.dispatch(action); // action会执行,此步只是触发actionCreators中的函数
-        
         // axios.get('/api/list').then((res) => {
         //     console.log(res)
         // })
-        // const axiosdata = ['hello', 'small', 'fatty']
-        // const action = initListAction(axiosdata);
-        // store.dispatch(action);
+        const axiosdata = ['hello', 'small', 'fatty']
+        const action = initListAction(axiosdata);
+        store.dispatch(action);
     }
 
     // 监听执行store.subscribe

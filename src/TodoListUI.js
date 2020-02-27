@@ -42,7 +42,7 @@ class TodoListUI2 extends Component {
                     style={{marginTop: '10px', width: '300px'}}
                     bordered
                     dataSource={this.props.list}
-                    renderItem={(item, index) => <List.Item onClick={(index) => {this.props.handleItemDelete(index)}}>{item}</List.Item>}
+                    renderItem={(item, index) => <List.Item onClick={() => {this.props.handleItemDelete(index)}}>{item}</List.Item>}
                 />
             </div>
         )
