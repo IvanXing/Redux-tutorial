@@ -33,3 +33,9 @@
  renderItem={(item, index) => <List.Item onClick={(index) => {this.props.handleItemDelete(index)}}>{item}</List.Item>}
 ```
 * TodoList.js(容器组件)，TodoListUI.js(UI组件)
+
+### 5. 无状态组件
+
+* TodoListUI是一个UI组件，且只有一个render函数，此时，可以用一个函数定义无状态组件
+* 当组件中功能只是渲染(render)，就可写成无状态组件(函数)
+* 无状态组件为函数，普通组件为class，类需要执行生命周期等，性能不如函数组件
