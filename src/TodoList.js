@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import store from './store/index'
-import { getInputChangeAction, getAddItemAction, getDeleteItemAction } from './store/actionCreators';
+import { getInputChangeAction, getAddItemAction, getDeleteItemAction, initListAction } from './store/actionCreators';
 import TodoListUI from './TodoListUI';
+// import axios from 'axios';
 
 class TodoList extends Component {
 
@@ -28,6 +29,16 @@ class TodoList extends Component {
                 handleItemDelete={this.handleItemDelete}
             />
         )
+    }
+
+    // 获取接口数据
+    componentDidMount() {
+        // axios.get('/api/list').then((res) => {
+        //     console.log(res)
+        // })
+        const data = ['hello', 'small', 'fatty']
+        const action = initListAction(data);
+        store.dispatch(action);
     }
 
     // 监听执行store.subscribe
