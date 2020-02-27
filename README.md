@@ -24,3 +24,12 @@
 
 * 提高代码的可维护性
 * 方便自动化测试测试
+
+### 4. UI组件与容器组件的拆分
+
+* UI组件(傻瓜组件)负责页面的渲染，容器组件(聪明组件)负责页面的逻辑
+* UI组件回传index给容器组件
+```
+ renderItem={(item, index) => <List.Item onClick={(index) => {this.props.handleItemDelete(index)}}>{item}</List.Item>}
+```
+* TodoList.js(容器组件)，TodoListUI.js(UI组件)
