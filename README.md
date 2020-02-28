@@ -66,3 +66,23 @@ const store = createStore(rootReducer, applyMiddleware(thunk));
 ### 7. Redux saga（异步逻辑放到单独文件中管理 sagas.js）
 
 * yarn add redux-saga
+
+### 8. React-Redux
+
+* 第三方模块，在React中更方便的使用Redux
+* yarn add react-redux
+* Provider连接store，包裹组件都有能力获得store的数据
+* Procider提供器
+```
+import { Provider } from 'react-redux'; 
+import store from './store'
+const App = (
+    <Provider store={store}>
+        <TodoList />
+        <A />
+        <B />
+    </Provider>
+);
+
+```
+* connect连接，传入store给props，传出dispatch
